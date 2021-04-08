@@ -119,6 +119,8 @@ while games_count != 0:
         if comp_choice == 2:
             user_wins += 1
             continue
+            
+# add some comment
 
 
 # Rock - 0
