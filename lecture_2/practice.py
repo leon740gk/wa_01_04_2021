@@ -97,17 +97,29 @@
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 # Реализуйте серию из n игр "Камень, ножницы, бумага" с компьютером.
 # В результате выведите статистику: сколько игр выиграл пользователь,
-# сколько раз каждого вида ходов было выбрано.
+# сколько раз каждого вида ходов было сделано.
 # ---------------------------------------------------------------------------------------------------
 # Дополните игру анализом компьютера ваших ходов и выбор наиболее подходящего против вас хода.
-
+import random
 
 games_count = int(input("How many games do you wanna play? (please input number): "))
 print(f"Ok, you are about to play {games_count} games...")
 print("Please enter for Rock: 0, Paper: 1, Scissors: 2")
 
+user_wins = 0
+
 while games_count != 0:
-    pass
+    user_input = int(input("Please make your choice: "))
+    comp_choice = random.randint(0, 2)
+
+    if user_input == 0:
+        if user_input == comp_choice or comp_choice == 1:
+            games_count -= 1
+            continue
+        if comp_choice == 2:
+            user_wins += 1
+            continue
+
 
 # Rock - 0
 # Paper - 1
