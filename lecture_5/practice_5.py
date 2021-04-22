@@ -121,25 +121,28 @@
 
 # ====================================================================================
 # Function args ----------------------------------------------------------------------
-from typing import Callable
-
-
-def upper_case(input_string: str) -> str:
-    return input_string.upper()
-
-def lower_case(input_string: str) -> str:
-    return input_string.lower()
-
-def string_changer(input_func: Callable, input_string: str) -> str:
-    return input_func(input_string)
-
-test_string = "How much is this fish ? ))"
-
-result_1 = string_changer(upper_case, test_string)
-result_2 = string_changer(lower_case, test_string)
-
-print(result_1)
-print(result_2)
+# from typing import Callable
+#
+#
+# def upper_case(input_string: str) -> str:
+#     string_1 = input_string.upper()
+#     return string_1
+#
+# def lower_case(input_string: str) -> str:
+#     string_2 = input_string.lower()
+#     return string_2
+#
+# def string_changer(input_func: Callable, input_string: str) -> str:
+#     result = input_func(input_string)
+#     return result
+#
+#
+# if __name__ == "__main__":
+#     test_string = "How much is this fish ? ))"
+#     result_1 = string_changer(upper_case, test_string)
+#     result_2 = string_changer(lower_case, test_string)
+#     print(result_1)
+#     print(result_2)
 
 
 
@@ -153,13 +156,14 @@ print(result_2)
 #
 # foo(5)
 # print(c)
-#
+
+
 # a = 7
 # print(a)
 #
 # def foo():
-#     print(a)
-#     a += 1
+#     global a
+#     a = a + 1
 #     print(a)
 #
 # foo()
@@ -167,22 +171,36 @@ print(result_2)
 
 # Enclosing Scope (Nonlocal Scope) ---------------------------------------------------
 # a = 7
+#
 # def red():
-#     b = 4
+#     b = 8
 #     def blue():
 #         global a
 #         nonlocal b
-#         print(a)
-#         a += 1
 #         b += 1
+#         print(a)
 #         print(b)
 #     blue()
 #     print(a)
 #
 # red()
 
+# a = []
+# for i in range(40):
+#     a.append(i)
+
 
 # Built-in Scope ---------------------------------------------------------------------
+
+# def len(container):
+#     result = []
+#     for i in container:
+#         result.append(i ** 2)
+#
+#     return result
+#
+# print(len([1,2,3,4]))
+
 # def my_len(input_string):
 #     return input_string + "this is my global function"
 #
@@ -197,6 +215,15 @@ print(result_2)
 # Closures ---------------------------------------------------------------------------
 # http://www.trytoprogram.com/python-programming/python-closures/
 # https://www.programiz.com/python-programming/closure
+
+
+# def func1():  #Outer function
+#   msg = 'I belong to func1'
+#   def func2(): #Nested function
+#       print (msg)
+#   return func2
+#
+# result = func1()
 
 
 # def make_multiplier_of(n):
@@ -218,13 +245,29 @@ print(result_2)
 # print(times5(3))
 #
 # # Output: 30
-# print(times5(times3(2)))
-
+# # print(times5(times3(2)))
+# def my_max():
+#     result = max(sdfvldns)
+#     dkvhdsfkv
+#     sdfvdfv
+#
+# max()
 
 
 # ====================================================================================
 # Recursion and call stack -----------------------------------------------------------
 # https://realpython.com/python-thinking-recursively/
+
+
+
+# def factorial_recursive(n):
+#     return 1 if n == 1 else n * factorial_recursive(n-1)
+#
+#
+# if __name__ == "__main__":
+#     result = factorial_recursive(7)
+#     print(result)
+
 
 # factorial without recursion
 # n = int(input("Enter the number: "))
@@ -252,46 +295,46 @@ print(result_2)
 
 # https://py.checkio.org/en/mission/morse-decoder/
 # to solve
-# MORSE = {'.-':    'a', '-...':  'b', '-.-.':  'c',
-#          '-..':   'd', '.':     'e', '..-.':  'f',
-#          '--.':   'g', '....':  'h', '..':    'i',
-#          '.---':  'j', '-.-':   'k', '.-..':  'l',
-#          '--':    'm', '-.':    'n', '---':   'o',
-#          '.--.':  'p', '--.-':  'q', '.-.':   'r',
-#          '...':   's', '-':     't', '..-':   'u',
-#          '...-':  'v', '.--':   'w', '-..-':  'x',
-#          '-.--':  'y', '--..':  'z', '-----': '0',
-#          '.----': '1', '..---': '2', '...--': '3',
-#          '....-': '4', '.....': '5', '-....': '6',
-#          '--...': '7', '---..': '8', '----.': '9'
-#         }
-#
-# def morse_decoder(input_data):
-#     words = input_data.split("   ")
-#     output_list = []
-#     for word in words:
-#         letters = word.split()
-#         phrase = ""
-#         for i in letters:
-#             phrase += MORSE[i]
-#         output_list.append(phrase)
-#
-#     if output_list[0][0].isalpha():
-#         output_list[0] = output_list[0].capitalize()
-#
-#     result = " ".join(output_list)
-#
-#     return result
-#
-# if __name__ == '__main__':
-#     print("Example:")
-#     print(morse_decoder('... --- ...'))
-#
-#     #These "asserts" using only for self-checking and not necessary for auto-testing
-#     assert morse_decoder("... --- -- .   - . -..- -") == "Some text"
-#     assert morse_decoder("..--- ----- .---- ---..") == "2018"
-#     assert morse_decoder(".. -   .-- .- ...   .-   --. --- --- -..   -.. .- -.--") == "It was a good day"
-#     print("Coding complete? Click 'Check' to earn cool rewards!")
+MORSE = {'.-':    'a', '-...':  'b', '-.-.':  'c',
+         '-..':   'd', '.':     'e', '..-.':  'f',
+         '--.':   'g', '....':  'h', '..':    'i',
+         '.---':  'j', '-.-':   'k', '.-..':  'l',
+         '--':    'm', '-.':    'n', '---':   'o',
+         '.--.':  'p', '--.-':  'q', '.-.':   'r',
+         '...':   's', '-':     't', '..-':   'u',
+         '...-':  'v', '.--':   'w', '-..-':  'x',
+         '-.--':  'y', '--..':  'z', '-----': '0',
+         '.----': '1', '..---': '2', '...--': '3',
+         '....-': '4', '.....': '5', '-....': '6',
+         '--...': '7', '---..': '8', '----.': '9'
+        }
+
+def morse_decoder(input_data):
+    words = input_data.split("   ")
+    output_list = []
+    for word in words:
+        letters = word.split()
+        phrase = ""
+        for i in letters:
+            phrase += MORSE[i]
+        output_list.append(phrase)
+
+    if output_list[0][0].isalpha():
+        output_list[0] = output_list[0].capitalize()
+
+    result = " ".join(output_list)
+
+    return result
+
+if __name__ == '__main__':
+    print("Example:")
+    print(morse_decoder('... --- ...'))
+
+    #These "asserts" using only for self-checking and not necessary for auto-testing
+    assert morse_decoder("... --- -- .   - . -..- -") == "Some text"
+    assert morse_decoder("..--- ----- .---- ---..") == "2018"
+    assert morse_decoder(".. -   .-- .- ...   .-   --. --- --- -..   -.. .- -.--") == "It was a good day"
+    print("Coding complete? Click 'Check' to earn cool rewards!")
 
 # https://py.checkio.org/en/mission/split-list/
 # To solve
